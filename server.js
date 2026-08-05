@@ -16,7 +16,7 @@ const JWT_SECRET = process.env.JWT_SECRET || "your_super_secret_key_here";
 
 // --- MIDDLEWARE ---
 app.use(cors({
-    origin: ["http://localhost:5173", "https://askmate.vercel.app"], // Replace with your exact Vercel frontend URL
+    origin: ["http://localhost:5173", "https://askmate-pearl.vercel.app/"], // Replace with your exact Vercel frontend URL
     credentials: true
 }));
 app.use(express.json());
