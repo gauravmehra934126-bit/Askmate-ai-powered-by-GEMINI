@@ -63,7 +63,7 @@ app.post("/api/auth/login", async (req, res) => {
         res.cookie("token", token, {
             httpOnly: true,
             sameSite: "none",
-            secure: false, // Set to true in production with HTTPS
+            secure: true, // Set to true in production with HTTPS
             maxAge: 3 * 24 * 60 * 60 * 1000
         }).json({ message: "Logged in successfully", username: user.username });
 
