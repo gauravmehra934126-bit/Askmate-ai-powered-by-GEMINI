@@ -15,10 +15,16 @@ const PORT = process.env.PORT || 8080;
 const JWT_SECRET = process.env.JWT_SECRET || "your_super_secret_key_here";
 
 // --- MIDDLEWARE ---
+
 app.use(cors({
-    origin: ["http://localhost:5173", "https://askmate-pearl.vercel.app/"], // Replace with your exact Vercel frontend URL
+    origin: [
+        "http://localhost:5173",
+        "https://askmate-pearl.vercel.app"
+    ],
     credentials: true
 }));
+
+
 app.use(express.json());
 app.use(cookieParser());
 
@@ -56,6 +62,7 @@ app.post("/api/auth/login", async (req, res) => {
 
         res.cookie("token", token, {
             httpOnly: true,
+            sameSite: "none",
             secure: false, // Set to true in production with HTTPS
             maxAge: 3 * 24 * 60 * 60 * 1000
         }).json({ message: "Logged in successfully", username: user.username });
